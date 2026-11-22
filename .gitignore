@@ -1,0 +1,6 @@
+.planning/
+__pycache__/
+*.py[cod]
+.venv/
+reviewed-examples*.jsonl
+.local/

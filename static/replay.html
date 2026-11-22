@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a2a">
+  <title>HITL Studio | Recorded cases</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/replay.css">
+  <script src="/replay.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="frame topbar-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">H</span> HITL Studio</a>
+      <a class="mode" href="/practice">Open editable demo</a>
+    </div>
+  </header>
+  <main class="frame" id="main">
+    <section class="intro" aria-labelledby="title">
+      <div class="intro-copy">
+        <h1 id="title">Recorded cases</h1>
+        <p>Follow released benchmark examples from model generation through reviewer feedback and model revision to the final human decision.</p>
+      </div>
+    </section>
+    <p id="replay-notice" role="status">Loading local records…</p>
+    <div class="replay-layout" id="replay-layout" hidden>
+      <section aria-labelledby="case-list-heading" class="case-list">
+        <h2 id="case-list-heading">Mathematics and physics cases</h2>
+        <div id="cases"></div>
+      </section>
+      <article class="panel replay-card" id="case"></article>
+    </div>
+  </main>
+  <footer class="frame footer">Local archive replay · Model requests are recorded results</footer>
+</body>
+</html>

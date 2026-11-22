@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a2a">
+  <title>HITL Studio | Scientific error review</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="frame topbar-inner">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">H</span> HITL Studio</a>
+      <span class="mode"><span class="dot"></span> Simulated model · No API key</span>
+    </div>
+  </header>
+  <main class="frame" id="main">
+    <section class="intro" aria-labelledby="title">
+      <div class="intro-copy">
+        <h1 id="title">Scientific error review</h1>
+        <p>Set a target error category, inspect what the model generates, and decide what makes it into the benchmark.</p>
+      </div>
+      <nav class="steps" aria-label="Demo stages">
+        <a id="recorded-link" href="/replay" hidden>Recorded cases</a>
+        <a class="active" href="#batch">Plan batch</a>
+        <a id="review-link" href="#review" hidden>Review sample</a>
+        <a id="export-link" href="#record" hidden>Review record</a>
+      </nav>
+    </section>
+    <p class="message" id="notice" role="status" hidden></p>
+    <section class="panel batch" id="batch" aria-labelledby="batch-heading">
+      <div class="section-head">
+        <div><h2 id="batch-heading">Batch plan</h2><p>2 mathematics and 2 physics examples</p></div>
+        <div id="batch-controls" class="batch-controls"></div>
+      </div>
+      <div id="batch-table" aria-busy="true"><p class="loading">Loading sample assignments…</p></div>
+    </section>
+    <section id="review" hidden aria-labelledby="review-heading"></section>
+    <section id="record" hidden aria-labelledby="history-heading"></section>
+  </main>
+  <footer class="frame footer">Local practice session</footer>
+</body>
+</html>

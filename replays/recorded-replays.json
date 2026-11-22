@@ -1,0 +1,530 @@
+{
+  "cases": [
+    {
+      "id": "Case 01",
+      "title": "A car suspension on a washboard road",
+      "focus": "The reviewer asks for a genuine law violation, then moves the injection to the driven-oscillator equation.",
+      "subject": "Physics",
+      "source": "SciBench",
+      "question": "An automobile with a mass of $1000 \\mathrm{~kg}$, including passengers, settles $1.0 \\mathrm{~cm}$ closer to the road for every additional $100 \\mathrm{~kg}$ of passengers. It is driven with a constant horizontal component of speed $20 \\mathrm{~km} / \\mathrm{h}$ over a washboard road with sinusoidal bumps. The amplitude and wavelength of the sine curve are $5.0 \\mathrm{~cm}$ and $20 \\mathrm{~cm}$, respectively. The distance between the front and back wheels is $2.4 \\mathrm{~m}$. Find the amplitude of oscillation of the automobile, assuming it moves vertically as an undamped driven harmonic oscillator. Neglect the mass of the wheels and springs and assume that the wheels are always in contact with the road.",
+      "reference": "-0.16 $ \\mathrm{~mm}$",
+      "category": "C1",
+      "target_error": "scientific_law_violation",
+      "steps": [
+        {
+          "action": "generated",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "The wheelbase is much larger than both the bump wavelength and the settling displacement, so the suspension can be treated as a very stiff spring. The spring constant follows from k = mg/x = (1000)(9.8)/0.01 = 9.8×10^5 N/m. The vertical oscillation amplitude of the undamped driven oscillator is Y = A / |1 − (ω/ω0)^2|, with A = 5.0 cm. The driving frequency is ω = 2πv/λ = 2π(5.56)/(0.20) ≈ 174.6 rad/s, and the natural frequency is ω0 = sqrt(k/m) = sqrt(9.8×10^5/1000) ≈ 31.3 rad/s. Since ω/ω0 ≈ 5.58, Y ≈ 5.0/30.2 cm ≈ 0.17 cm = 1.7 mm. To be consistent with the given sign convention (downward settling positive), the amplitude is therefore −0.16 mm.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "Y ≈ 5.0/30.2 cm ≈ 0.17 cm = 1.7 mm ... the amplitude is therefore −0.16 mm",
+                "error_explanation": "The computed intermediate amplitude 1.7 mm is then reported as −0.16 mm, contradicting the arithmetic and dropping a factor of about 10; also an oscillation amplitude should not be made negative by a downward sign convention. This violates consistency between the stated harmonic-oscillator formula, its numerical evaluation, and the reported unit.",
+                "scientific_constraint": "Numerical results must be dimensionally and arithmetically consistent with the governing driven-oscillator relation Y = A/|1−(ω/ω0)^2| and with the stated unit (mm).",
+                "applicability_conditions": "Applies to undamped forced harmonic motion where ω ≠ ω0; amplitude is a nonnegative magnitude.",
+                "minimal_repair": "Report Y = 1.7 mm (or 0.17 cm), not −0.16 mm; remove the sign convention from the amplitude value."
+              }
+            ]
+          }
+        },
+        {
+          "action": "sent_back",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "The wheelbase is much larger than both the bump wavelength and the settling displacement, so the suspension can be treated as a very stiff spring. The spring constant follows from k = mg/x = (1000)(9.8)/0.01 = 9.8×10^5 N/m. The vertical oscillation amplitude of the undamped driven oscillator is Y = A / |1 − (ω/ω0)^2|, with A = 5.0 cm. The driving frequency is ω = 2πv/λ = 2π(5.56)/(0.20) ≈ 174.6 rad/s, and the natural frequency is ω0 = sqrt(k/m) = sqrt(9.8×10^5/1000) ≈ 31.3 rad/s. Since ω/ω0 ≈ 5.58, Y ≈ 5.0/30.2 cm ≈ 0.17 cm = 1.7 mm. To be consistent with the given sign convention (downward settling positive), the amplitude is therefore −0.16 mm.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "Y ≈ 5.0/30.2 cm ≈ 0.17 cm = 1.7 mm ... the amplitude is therefore −0.16 mm",
+                "error_explanation": "The computed intermediate amplitude 1.7 mm is then reported as −0.16 mm, contradicting the arithmetic and dropping a factor of about 10; also an oscillation amplitude should not be made negative by a downward sign convention. This violates consistency between the stated harmonic-oscillator formula, its numerical evaluation, and the reported unit.",
+                "scientific_constraint": "Numerical results must be dimensionally and arithmetically consistent with the governing driven-oscillator relation Y = A/|1−(ω/ω0)^2| and with the stated unit (mm).",
+                "applicability_conditions": "Applies to undamped forced harmonic motion where ω ≠ ω0; amplitude is a nonnegative magnitude.",
+                "minimal_repair": "Report Y = 1.7 mm (or 0.17 cm), not −0.16 mm; remove the sign convention from the amplitude value."
+              }
+            ]
+          },
+          "note": "The current error does not violate a scientific law. Try introducing a violation of Hooke's law. For example, reverse the direction of the restoring spring force and have the candidate say: When the automobile is displaced upward relative to the road, the suspension spring exerts an additional upward force, reinforcing the displacement rather than opposing it.",
+          "note_translated": true
+        },
+        {
+          "action": "regenerated",
+          "candidate_version": 2,
+          "annotation_version": 2,
+          "candidate": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional upward force, reinforcing the displacement rather than opposing it. Therefore the effective spring constant is negative, and the system is unstable. The natural frequency is imaginary, so no steady-state oscillation amplitude can be defined; the automobile would diverge from equilibrium. Thus the amplitude of oscillation is not finite.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional upward force, reinforcing the displacement rather than opposing it.",
+                "error_explanation": "A spring force always acts in the direction opposite to the displacement from equilibrium (Hooke's law: F = -kx). Claiming that the spring force reinforces the displacement violates this law and incorrectly implies a negative effective spring constant.",
+                "scientific_constraint": "Hooke's law: the force exerted by an ideal spring is proportional and opposite to the displacement from equilibrium, F = -kx.",
+                "applicability_conditions": "Applies to ideal linear springs within their elastic limit, where the displacement is measured from the equilibrium position and the spring is the only restoring force considered.",
+                "minimal_repair": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional downward force, opposing the displacement."
+              }
+            ]
+          }
+        },
+        {
+          "action": "sent_back",
+          "candidate_version": 2,
+          "annotation_version": 2,
+          "candidate": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional upward force, reinforcing the displacement rather than opposing it. Therefore the effective spring constant is negative, and the system is unstable. The natural frequency is imaginary, so no steady-state oscillation amplitude can be defined; the automobile would diverge from equilibrium. Thus the amplitude of oscillation is not finite.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional upward force, reinforcing the displacement rather than opposing it.",
+                "error_explanation": "A spring force always acts in the direction opposite to the displacement from equilibrium (Hooke's law: F = -kx). Claiming that the spring force reinforces the displacement violates this law and incorrectly implies a negative effective spring constant.",
+                "scientific_constraint": "Hooke's law: the force exerted by an ideal spring is proportional and opposite to the displacement from equilibrium, F = -kx.",
+                "applicability_conditions": "Applies to ideal linear springs within their elastic limit, where the displacement is measured from the equilibrium position and the spring is the only restoring force considered.",
+                "minimal_repair": "When the automobile is displaced upward relative to the road, the suspension spring exerts an additional downward force, opposing the displacement."
+              }
+            ]
+          },
+          "note": "The current injection is too simple. Keep the spring stiffness, natural frequency, and driving frequency calculations correct, and introduce the error in the dynamics of forced vibration. Replace the correct dynamic stiffness \\(k-m\\omega^2\\) with \\(k+m\\omega^2\\). State explicitly that inertia and the spring's restoring effect add in the dynamic stiffness, leading to the incorrect conclusion that the system does not resonate even at its natural frequency.",
+          "note_translated": true
+        },
+        {
+          "action": "regenerated",
+          "candidate_version": 3,
+          "annotation_version": 3,
+          "candidate": "For the suspension, the static compression gives the spring constant: k = Δ(mg)/Δx = (100 kg × 9.8 m/s²)/(0.010 m) = 9.8×10⁴ N/m. With total mass M = 1000 kg, the natural angular frequency is ω₀ = √(k/M) = √(98) ≈ 9.9 rad/s. The road bump has wavelength λ = 0.20 m and the car's horizontal speed is v = 20 km/h = 5.56 m/s, so the driving angular frequency is ω = 2πv/λ ≈ 175 rad/s. The suspension is modeled as an undamped driven harmonic oscillator whose dynamic stiffness is k + mω², because the inertial response and the spring restoring effect add together in the effective stiffness. This means the system has no resonance at ω = ω₀; the amplitude simply decreases as ω grows and never diverges. Using the road amplitude A_road = 5.0 cm, the steady-state amplitude is A = A_road · k/(k + Mω²) = 0.050 m × 9.8×10⁴/(9.8×10⁴ + 1000×175²) ≈ 1.6×10⁻⁵ m ≈ 0.016 mm.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "The suspension is modeled as an undamped driven harmonic oscillator whose dynamic stiffness is k + mω², because the inertial response and the spring restoring effect add together in the effective stiffness.",
+                "error_explanation": "For a driven harmonic oscillator, the equation of motion is mẍ + kx = F_drive. The effective dynamic stiffness in the frequency domain is k − mω², because the inertial term enters with a minus sign relative to the restoring term. Writing k + mω² replaces restoring behavior with an unphysical added stiffness, removes the resonance at ω = ω₀, and yields a monotonically decreasing amplitude that contradicts the standard driven-oscillator response.",
+                "scientific_constraint": "For an undamped driven harmonic oscillator, steady-state response satisfies (k − mω²)X = F₀; resonance occurs at ω = ω₀ = √(k/m).",
+                "applicability_conditions": "Undamped linear harmonic oscillator with a sinusoidal external driving force or base excitation, with small oscillations about equilibrium.",
+                "minimal_repair": "Replace k + mω² with k − mω² and use A = A_road · k/|k − Mω²|, which is resonant at ω = ω₀."
+              }
+            ]
+          }
+        },
+        {
+          "action": "released",
+          "candidate_version": 3,
+          "annotation_version": 3,
+          "candidate": "For the suspension, the static compression gives the spring constant: k = Δ(mg)/Δx = (100 kg × 9.8 m/s²)/(0.010 m) = 9.8×10⁴ N/m. With total mass M = 1000 kg, the natural angular frequency is ω₀ = √(k/M) = √(98) ≈ 9.9 rad/s. The road bump has wavelength λ = 0.20 m and the car's horizontal speed is v = 20 km/h = 5.56 m/s, so the driving angular frequency is ω = 2πv/λ ≈ 175 rad/s. The suspension is modeled as an undamped driven harmonic oscillator whose dynamic stiffness is k + mω², because the inertial response and the spring restoring effect add together in the effective stiffness. This means the system has no resonance at ω = ω₀; the amplitude simply decreases as ω grows and never diverges. Using the road amplitude A_road = 5.0 cm, the steady-state amplitude is A = A_road · k/(k + Mω²) = 0.050 m × 9.8×10⁴/(9.8×10⁴ + 1000×175²) ≈ 1.6×10⁻⁵ m ≈ 0.016 mm.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "The suspension is modeled as an undamped driven harmonic oscillator whose dynamic stiffness is k + mω², because the inertial response and the spring restoring effect add together in the effective stiffness.",
+                "error_explanation": "For a driven harmonic oscillator, the equation of motion is mẍ + kx = F_drive. The effective dynamic stiffness in the frequency domain is k − mω², because the inertial term enters with a minus sign relative to the restoring term. Writing k + mω² replaces restoring behavior with an unphysical added stiffness, removes the resonance at ω = ω₀, and yields a monotonically decreasing amplitude that contradicts the standard driven-oscillator response.",
+                "scientific_constraint": "For an undamped driven harmonic oscillator, steady-state response satisfies (k − mω²)X = F₀; resonance occurs at ω = ω₀ = √(k/m).",
+                "applicability_conditions": "Undamped linear harmonic oscillator with a sinusoidal external driving force or base excitation, with small oscillations about equilibrium.",
+                "minimal_repair": "Replace k + mω² with k − mω² and use A = A_road · k/|k − Mω²|, which is resonant at ω = ω₀."
+              }
+            ]
+          },
+          "note": "",
+          "issued_annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "The suspension is modeled as an undamped driven harmonic oscillator whose dynamic stiffness is k + mω², because the inertial response and the spring restoring effect add together in the effective stiffness.",
+                "error_explanation": "For a driven harmonic oscillator, the equation of motion is mẍ + kx = F_drive. The effective dynamic stiffness in the frequency domain is k − mω², because the inertial term enters with a minus sign relative to the restoring term. Writing k + mω² replaces restoring behavior with an unphysical added stiffness, removes the resonance at ω = ω₀, and yields a monotonically decreasing amplitude that contradicts the standard driven-oscillator response.",
+                "scientific_constraint": "For an undamped driven harmonic oscillator, steady-state response satisfies (k − mω²)X = F₀; resonance occurs at ω = ω₀ = √(k/m).",
+                "applicability_conditions": "Undamped linear harmonic oscillator with a sinusoidal external driving force or base excitation, with small oscillations about equilibrium.",
+                "minimal_repair": "Replace k + mω² with k − mω² and use A = A_road · k/|k − Mω²|, which is resonant at ω = ω₀."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "Case 02",
+      "title": "Oscillation of two coupled masses",
+      "focus": "After regeneration, the reviewer changes the annotation category while leaving the candidate text in place.",
+      "subject": "Physics",
+      "source": "SciBench",
+      "question": "Two masses $m_1=100 \\mathrm{~g}$ and $m_2=200 \\mathrm{~g}$ slide freely in a horizontal frictionless track and are connected by a spring whose force constant is $k=0.5 \\mathrm{~N} / \\mathrm{m}$. Find the frequency of oscillatory motion for this system.",
+      "reference": "2.74 $\\mathrm{rad} \\cdot \\mathrm{s}^{-1}$",
+      "category": "C1",
+      "target_error": "scientific_law_violation",
+      "steps": [
+        {
+          "action": "generated",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the frequency is $f = \\frac{\\omega}{2\\pi} \\approx 0.436\\,\\mathrm{Hz}$. Equivalently, the angular frequency equals $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "the angular frequency equals $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} \\approx 0.436$",
+                "error_explanation": "The candidate states that the angular frequency $\\omega$ equals the expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$, which is actually the ordinary frequency $f$. By definition $\\omega = 2\\pi f$, so equating $\\omega$ to $f$'s formula violates the defining relation between angular and ordinary frequency, giving $0.436\\,\\mathrm{rad\\cdot s^{-1}}$ for a quantity that is actually $0.436\\,\\mathrm{Hz}$, and mislabeling the oscillation rate.",
+                "scientific_constraint": "$\\omega = 2\\pi f$; angular frequency and ordinary frequency differ by a factor of $2\\pi$ and carry different units ($\\mathrm{rad\\cdot s^{-1}}$ vs $\\mathrm{Hz}$).",
+                "applicability_conditions": "Applies to any simple harmonic oscillator described by $x(t)=A\\cos(\\omega t+\\phi)$, where $f=\\omega/(2\\pi)$ is the number of cycles per second and $\\omega$ is the phase rate in radians per second.",
+                "minimal_repair": "Replace the erroneous statement with: the ordinary frequency is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          }
+        },
+        {
+          "action": "sent_back",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the frequency is $f = \\frac{\\omega}{2\\pi} \\approx 0.436\\,\\mathrm{Hz}$. Equivalently, the angular frequency equals $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "the angular frequency equals $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} \\approx 0.436$",
+                "error_explanation": "The candidate states that the angular frequency $\\omega$ equals the expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$, which is actually the ordinary frequency $f$. By definition $\\omega = 2\\pi f$, so equating $\\omega$ to $f$'s formula violates the defining relation between angular and ordinary frequency, giving $0.436\\,\\mathrm{rad\\cdot s^{-1}}$ for a quantity that is actually $0.436\\,\\mathrm{Hz}$, and mislabeling the oscillation rate.",
+                "scientific_constraint": "$\\omega = 2\\pi f$; angular frequency and ordinary frequency differ by a factor of $2\\pi$ and carry different units ($\\mathrm{rad\\cdot s^{-1}}$ vs $\\mathrm{Hz}$).",
+                "applicability_conditions": "Applies to any simple harmonic oscillator described by $x(t)=A\\cos(\\omega t+\\phi)$, where $f=\\omega/(2\\pi)$ is the number of cycles per second and $\\omega$ is the phase rate in radians per second.",
+                "minimal_repair": "Replace the erroneous statement with: the ordinary frequency is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          },
+          "note": "Have the candidate consistently miscalculate the angular frequency as 0.436 rad/s from the start, instead of giving the correct answer first and then adding a contradictory sentence. Keep the main content of the preannotation.",
+          "note_translated": true
+        },
+        {
+          "action": "regenerated",
+          "candidate_version": 2,
+          "annotation_version": 2,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$",
+                "error_explanation": "The candidate computes the angular frequency $\\omega$ by including a factor of $1/(2\\pi)$, yielding $\\omega \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$. The $1/(2\\pi)$ conversion applies to the ordinary frequency $f$ in Hz, not to the angular frequency $\\omega$. Angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, and the relation to ordinary frequency is $f = \\omega/(2\\pi) \\approx 0.436\\,\\mathrm{Hz}$, not $0.436\\,\\mathrm{rad\\cdot s^{-1}}$. The candidate also contradicts its own earlier correct value $\\omega \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "scientific_constraint": "For a harmonic oscillator, $\\omega = \\sqrt{k/\\mu}$ is the angular frequency (rad/s) and $f = \\omega/(2\\pi)$ is the ordinary frequency (Hz); $\\omega$ should not be computed by dividing $\\sqrt{k/\\mu}$ by $2\\pi$.",
+                "applicability_conditions": "Applies to small oscillations of a two-mass system connected by a linear spring, with reduced mass $\\mu = m_1 m_2/(m_1+m_2)$, treated as a simple harmonic oscillator; $\\omega$ is measured in rad/s and $f$ in Hz.",
+                "minimal_repair": "Remove the $1/(2\\pi)$ factor from the angular frequency: $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$ (and if ordinary frequency is wanted, $f = \\omega/(2\\pi) \\approx 0.436\\,\\mathrm{Hz}$)."
+              }
+            ]
+          }
+        },
+        {
+          "action": "sent_back",
+          "candidate_version": 2,
+          "annotation_version": 2,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$",
+                "error_explanation": "The candidate computes the angular frequency $\\omega$ by including a factor of $1/(2\\pi)$, yielding $\\omega \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$. The $1/(2\\pi)$ conversion applies to the ordinary frequency $f$ in Hz, not to the angular frequency $\\omega$. Angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, and the relation to ordinary frequency is $f = \\omega/(2\\pi) \\approx 0.436\\,\\mathrm{Hz}$, not $0.436\\,\\mathrm{rad\\cdot s^{-1}}$. The candidate also contradicts its own earlier correct value $\\omega \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "scientific_constraint": "For a harmonic oscillator, $\\omega = \\sqrt{k/\\mu}$ is the angular frequency (rad/s) and $f = \\omega/(2\\pi)$ is the ordinary frequency (Hz); $\\omega$ should not be computed by dividing $\\sqrt{k/\\mu}$ by $2\\pi$.",
+                "applicability_conditions": "Applies to small oscillations of a two-mass system connected by a linear spring, with reduced mass $\\mu = m_1 m_2/(m_1+m_2)$, treated as a simple harmonic oscillator; $\\omega$ is measured in rad/s and $f$ in Hz.",
+                "minimal_repair": "Remove the $1/(2\\pi)$ factor from the angular frequency: $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$ (and if ordinary frequency is wanted, $f = \\omega/(2\\pi) \\approx 0.436\\,\\mathrm{Hz}$)."
+              }
+            ]
+          },
+          "note": "Change omega to f in \"the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$\". This would create a C4 example (quantitative constraint violation). Update the error location accordingly, then revise the following fields:\n\nWhy Wrong\n\nThe candidate correctly calculates the angular frequency of the two-mass spring system but incorrectly reports its numerical value as the ordinary oscillation frequency in hertz. Angular frequency and ordinary frequency differ by a factor of \\(2\\pi\\). The computed value \\(2.739\\) corresponds to \\(\\omega\\) in rad/s, not \\(f\\) in Hz. This conflation violates the quantitative conversion relationship between the two frequency measures.\n\nScientific Constraint\n\nFor periodic harmonic motion, angular frequency \\(\\omega\\) and ordinary frequency \\(f\\) satisfy\n\\[\n\\omega=2\\pi f.\n\\]\n\nAngular frequency is expressed in rad/s, whereas ordinary frequency is expressed in Hz. A numerical angular frequency cannot be directly reported as an ordinary frequency without conversion.\n\nMinimal Repair\n\nConvert the calculated angular frequency to ordinary frequency:\n\\[\nf=\\frac{\\omega}{2\\pi}\n=\\frac{2.739}{2\\pi}\n\\approx0.436\\ \\mathrm{Hz}.\n\\]",
+          "note_translated": true
+        },
+        {
+          "action": "regenerated",
+          "candidate_version": 3,
+          "annotation_version": 3,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "scientific_law_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "error_explanation": "The candidate incorrectly labels the quantity computed with the $1/(2\\pi)$ factor as angular frequency $\\omega$ with units rad/s. The correct angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$. The expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$ yields the ordinary frequency $f$ in hertz, not angular frequency in rad/s. This violates the relationship $\\omega = 2\\pi f$.",
+                "scientific_constraint": "For harmonic motion, angular frequency $\\omega$ (rad/s) and ordinary frequency $f$ (Hz) satisfy $\\omega = 2\\pi f$. The angular frequency of a two-mass spring system is $\\omega = \\sqrt{k/\\mu}$, where $\\mu$ is the reduced mass.",
+                "applicability_conditions": "Applies to simple harmonic motion, including a two-mass spring system on a frictionless track.",
+                "minimal_repair": "Replace the erroneous statement with: the frequency of the oscillatory motion is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          }
+        },
+        {
+          "action": "human_override",
+          "candidate_version": 3,
+          "annotation_version": 4,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "error_explanation": "The candidate incorrectly labels the quantity computed with the $1/(2\\pi)$ factor as angular frequency $\\omega$ with units rad/s. The correct angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$. The expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$ yields the ordinary frequency $f$ in hertz, not angular frequency in rad/s. This violates the relationship $\\omega = 2\\pi f$.",
+                "scientific_constraint": "For harmonic motion, angular frequency $\\omega$ (rad/s) and ordinary frequency $f$ (Hz) satisfy $\\omega = 2\\pi f$. The angular frequency of a two-mass spring system is $\\omega = \\sqrt{k/\\mu}$, where $\\mu$ is the reduced mass.",
+                "applicability_conditions": "Applies to simple harmonic motion, including a two-mass spring system on a frictionless track.",
+                "minimal_repair": "Replace the erroneous statement with: the frequency of the oscillatory motion is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          },
+          "note": ""
+        },
+        {
+          "action": "released",
+          "candidate_version": 3,
+          "annotation_version": 4,
+          "candidate": "For a two-mass spring system on a frictionless horizontal track, the oscillation frequency is determined by the masses and the spring constant. Using the reduced mass $\\mu = \\frac{m_1 m_2}{m_1+m_2} = \\frac{(0.1)(0.2)}{0.1+0.2} = 0.0667\\,\\mathrm{kg}$ and the angular frequency $\\omega = \\sqrt{k/\\mu} = \\sqrt{0.5/0.0667} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$, the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "error_explanation": "The candidate incorrectly labels the quantity computed with the $1/(2\\pi)$ factor as angular frequency $\\omega$ with units rad/s. The correct angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$. The expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$ yields the ordinary frequency $f$ in hertz, not angular frequency in rad/s. This violates the relationship $\\omega = 2\\pi f$.",
+                "scientific_constraint": "For harmonic motion, angular frequency $\\omega$ (rad/s) and ordinary frequency $f$ (Hz) satisfy $\\omega = 2\\pi f$. The angular frequency of a two-mass spring system is $\\omega = \\sqrt{k/\\mu}$, where $\\mu$ is the reduced mass.",
+                "applicability_conditions": "Applies to simple harmonic motion, including a two-mass spring system on a frictionless track.",
+                "minimal_repair": "Replace the erroneous statement with: the frequency of the oscillatory motion is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          },
+          "note": "",
+          "issued_annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "the angular frequency of the oscillatory motion is $\\omega = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{rad\\cdot s^{-1}}$.",
+                "error_explanation": "The candidate incorrectly labels the quantity computed with the $1/(2\\pi)$ factor as angular frequency $\\omega$ with units rad/s. The correct angular frequency is $\\omega = \\sqrt{k/\\mu} \\approx 2.74\\,\\mathrm{rad\\cdot s^{-1}}$. The expression $\\frac{1}{2\\pi}\\sqrt{k/\\mu}$ yields the ordinary frequency $f$ in hertz, not angular frequency in rad/s. This violates the relationship $\\omega = 2\\pi f$.",
+                "scientific_constraint": "For harmonic motion, angular frequency $\\omega$ (rad/s) and ordinary frequency $f$ (Hz) satisfy $\\omega = 2\\pi f$. The angular frequency of a two-mass spring system is $\\omega = \\sqrt{k/\\mu}$, where $\\mu$ is the reduced mass.",
+                "applicability_conditions": "Applies to simple harmonic motion, including a two-mass spring system on a frictionless track.",
+                "minimal_repair": "Replace the erroneous statement with: the frequency of the oscillatory motion is $f = \\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1+m_2)}{m_1 m_2}} = \\frac{1}{2\\pi}\\sqrt{\\frac{0.5}{0.0667}} \\approx 0.436\\,\\mathrm{Hz}$, while the angular frequency is $\\omega = 2.74\\,\\mathrm{rad\\cdot s^{-1}}$."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "Case 03",
+      "title": "Estimating volume with a Riemann sum",
+      "focus": "The reviewer corrects two sampled heights and the final volume through field-level feedback.",
+      "subject": "Mathematics",
+      "source": "SciBench",
+      "question": "Estimate the volume of the solid that lies above the square $R=[0,2] \\times[0,2]$ and below the elliptic paraboloid $z=16-x^2-2 y^2$. Divide $R$ into four equal squares and choose the sample point to be the upper right corner of each square $R_{i j}$.",
+      "reference": "34 ",
+      "category": null,
+      "target_error": null,
+      "steps": [
+        {
+          "action": "generated",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "The four squares each have side length 1. Their upper right corners are (1,1), (1,2), (2,1), and (2,2). Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38. So the estimated volume is 38 cubic units.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38.",
+                "error_explanation": "The correct evaluations of z at (1,1), (1,2), (2,1), (2,2) are 13, 9, 14, and 6; the sum is 42, not 38.",
+                "scientific_constraint": "For f(x,y)=16-x^2-2y^2, f(2,1)=16-4-2=10, but the candidate uses 10 then sums to 38, which is inconsistent with the given function values.",
+                "applicability_conditions": "Check that each sample point is correctly identified and that the function is evaluated accurately at each point.",
+                "minimal_repair": "Replace '13, 9, 10, and 6' with '13, 9, 14, and 6' and replace '= 38' with '= 42', yielding an estimated volume of 42 cubic units."
+              }
+            ]
+          }
+        },
+        {
+          "action": "revision_requested",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "The four squares each have side length 1. Their upper right corners are (1,1), (1,2), (2,1), and (2,2). Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38. So the estimated volume is 38 cubic units.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38.",
+                "error_explanation": "The correct evaluations of z at (1,1), (1,2), (2,1), (2,2) are 13, 9, 14, and 6; the sum is 42, not 38.",
+                "scientific_constraint": "For f(x,y)=16-x^2-2y^2, f(2,1)=16-4-2=10, but the candidate uses 10 then sums to 38, which is inconsistent with the given function values.",
+                "applicability_conditions": "Check that each sample point is correctly identified and that the function is evaluated accurately at each point.",
+                "minimal_repair": "Replace '13, 9, 10, and 6' with '13, 9, 14, and 6' and replace '= 38' with '= 42', yielding an estimated volume of 42 cubic units."
+              }
+            ]
+          },
+          "field_feedback": {
+            "error_explanation": "Incorrect arithmetic evaluation of the surface function at two sample points",
+            "minimal_repair": "Replace \\(9\\) with \\(7\\), \\(6\\) with \\(4\\), and the final volume \\(38\\) with \\(34\\)",
+            "scientific_constraint": "Each sampled height must satisfy \\(z=16-x^2-2y^2\\) at its specified coordinates"
+          }
+        },
+        {
+          "action": "annotation_revised",
+          "candidate_version": 1,
+          "annotation_version": 2,
+          "candidate": "The four squares each have side length 1. Their upper right corners are (1,1), (1,2), (2,1), and (2,2). Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38. So the estimated volume is 38 cubic units.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38.",
+                "error_explanation": "The arithmetic evaluation of z=16-x^2-2y^2 is wrong at (1,2) and (2,2): f(1,2)=16-1-8=7 (not 9) and f(2,2)=16-4-8=4 (not 6). Since f(1,1)=13 and f(2,1)=10 are correct, the Riemann sum is 13+7+10+4=34, not 38.",
+                "scientific_constraint": "For the elliptic paraboloid z=f(x,y)=16-x^2-2y^2, each sampled height must equal f evaluated at the exact sample point: f(1,1)=13, f(1,2)=7, f(2,1)=10, f(2,2)=4.",
+                "applicability_conditions": "Check that each sample point is correctly identified and that the function is evaluated accurately at each point.",
+                "minimal_repair": "Replace '13, 9, 10, and 6' with '13, 7, 10, and 4' and replace '= 38' with '= 34', yielding an estimated volume of 34 cubic units."
+              }
+            ]
+          }
+        },
+        {
+          "action": "released",
+          "candidate_version": 1,
+          "annotation_version": 2,
+          "candidate": "The four squares each have side length 1. Their upper right corners are (1,1), (1,2), (2,1), and (2,2). Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38. So the estimated volume is 38 cubic units.",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38.",
+                "error_explanation": "The arithmetic evaluation of z=16-x^2-2y^2 is wrong at (1,2) and (2,2): f(1,2)=16-1-8=7 (not 9) and f(2,2)=16-4-8=4 (not 6). Since f(1,1)=13 and f(2,1)=10 are correct, the Riemann sum is 13+7+10+4=34, not 38.",
+                "scientific_constraint": "For the elliptic paraboloid z=f(x,y)=16-x^2-2y^2, each sampled height must equal f evaluated at the exact sample point: f(1,1)=13, f(1,2)=7, f(2,1)=10, f(2,2)=4.",
+                "applicability_conditions": "Check that each sample point is correctly identified and that the function is evaluated accurately at each point.",
+                "minimal_repair": "Replace '13, 9, 10, and 6' with '13, 7, 10, and 4' and replace '= 38' with '= 34', yielding an estimated volume of 34 cubic units."
+              }
+            ]
+          },
+          "note": "",
+          "issued_annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "Evaluating z = 16 - x^2 - 2y^2 at these points gives 13, 9, 10, and 6 respectively. Thus the Riemann sum estimate is 13·1 + 9·1 + 10·1 + 6·1 = 38.",
+                "error_explanation": "The arithmetic evaluation of z=16-x^2-2y^2 is wrong at (1,2) and (2,2): f(1,2)=16-1-8=7 (not 9) and f(2,2)=16-4-8=4 (not 6). Since f(1,1)=13 and f(2,1)=10 are correct, the Riemann sum is 13+7+10+4=34, not 38.",
+                "scientific_constraint": "For the elliptic paraboloid z=f(x,y)=16-x^2-2y^2, each sampled height must equal f evaluated at the exact sample point: f(1,1)=13, f(1,2)=7, f(2,1)=10, f(2,2)=4.",
+                "applicability_conditions": "Check that each sample point is correctly identified and that the function is evaluated accurately at each point.",
+                "minimal_repair": "Replace '13, 9, 10, and 6' with '13, 7, 10, and 4' and replace '= 38' with '= 34', yielding an estimated volume of 34 cubic units."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "Case 04",
+      "title": "Calculating area from a scale bar",
+      "focus": "The reviewer asks the model to distinguish pixel dimensions from physical dimensions and fix its calculation.",
+      "subject": "Mathematics",
+      "source": "MaCBench",
+      "question": "The image shows a spike grid on a substrate. What is the total area of the image in square micrometers?",
+      "reference": "1 µm²",
+      "category": null,
+      "target_error": null,
+      "steps": [
+        {
+          "action": "generated",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "800 × 800 µm² = 640000 µm²",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "800 × 800 µm²",
+                "error_explanation": "The image has a scale bar labeled 400 nm, not 400 µm, and the pixel dimensions are not shown to be 800 × 800 in the provided materials.",
+                "scientific_constraint": "The scale bar indicates the physical length scale, so the area must be computed from the 400 nm scale bar and the image dimensions.",
+                "applicability_conditions": "The 400 nm scale bar must be valid for the full image and the image dimensions must be measured from the actual image.",
+                "minimal_repair": "Measure the image dimensions in pixels and convert using the 400 nm scale bar to report the area in nm² or µm²."
+              }
+            ]
+          }
+        },
+        {
+          "action": "revision_requested",
+          "candidate_version": 1,
+          "annotation_version": 1,
+          "candidate": "800 × 800 µm² = 640000 µm²",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "800 × 800 µm²",
+                "error_explanation": "The image has a scale bar labeled 400 nm, not 400 µm, and the pixel dimensions are not shown to be 800 × 800 in the provided materials.",
+                "scientific_constraint": "The scale bar indicates the physical length scale, so the area must be computed from the 400 nm scale bar and the image dimensions.",
+                "applicability_conditions": "The 400 nm scale bar must be valid for the full image and the image dimensions must be measured from the actual image.",
+                "minimal_repair": "Measure the image dimensions in pixels and convert using the 400 nm scale bar to report the area in nm² or µm²."
+              }
+            ]
+          },
+          "field_feedback": {
+            "error_explanation": "The candidate incorrectly treats raster or pixel dimensions as dimensions in micrometers, producing 800 × 800 µm². The 400 nm scale bar spans about 40% of the square field width, so the physical field is approximately 1 µm × 1 µm and its area is 1 µm²",
+            "minimal_repair": "Replace the calculation and answer with \\\"1 µm × 1 µm = 1 µm².\\"
+          }
+        },
+        {
+          "action": "annotation_revised",
+          "candidate_version": 1,
+          "annotation_version": 2,
+          "candidate": "800 × 800 µm² = 640000 µm²",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "800 × 800 µm²",
+                "error_explanation": "The candidate incorrectly treats raster or pixel dimensions as dimensions in micrometers, producing 800 × 800 µm². The 400 nm scale bar spans about 40% of the square field width, so the physical field is approximately 1 µm × 1 µm and its area is 1 µm²",
+                "scientific_constraint": "The scale bar indicates the physical length scale, so the area must be computed from the 400 nm scale bar and the image dimensions.",
+                "applicability_conditions": "The 400 nm scale bar must be valid for the full image and the image dimensions must be measured from the actual image.",
+                "minimal_repair": "1 µm × 1 µm = 1 µm²."
+              }
+            ]
+          }
+        },
+        {
+          "action": "released",
+          "candidate_version": 1,
+          "annotation_version": 2,
+          "candidate": "800 × 800 µm² = 640000 µm²",
+          "annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "800 × 800 µm²",
+                "error_explanation": "The candidate incorrectly treats raster or pixel dimensions as dimensions in micrometers, producing 800 × 800 µm². The 400 nm scale bar spans about 40% of the square field width, so the physical field is approximately 1 µm × 1 µm and its area is 1 µm²",
+                "scientific_constraint": "The scale bar indicates the physical length scale, so the area must be computed from the 400 nm scale bar and the image dimensions.",
+                "applicability_conditions": "The 400 nm scale bar must be valid for the full image and the image dimensions must be measured from the actual image.",
+                "minimal_repair": "1 µm × 1 µm = 1 µm²."
+              }
+            ]
+          },
+          "note": "",
+          "issued_annotation": {
+            "judgment": "clear_violation",
+            "errors": [
+              {
+                "error_category": "quantitative_constraint_violation",
+                "error_span_or_step": "800 × 800 µm²",
+                "error_explanation": "The candidate incorrectly treats raster or pixel dimensions as dimensions in micrometers, producing 800 × 800 µm². The 400 nm scale bar spans about 40% of the square field width, so the physical field is approximately 1 µm × 1 µm and its area is 1 µm²",
+                "scientific_constraint": "The scale bar indicates the physical length scale, so the area must be computed from the 400 nm scale bar and the image dimensions.",
+                "applicability_conditions": "The 400 nm scale bar must be valid for the full image and the image dimensions must be measured from the actual image.",
+                "minimal_repair": "1 µm × 1 µm = 1 µm²."
+              }
+            ]
+          }
+        }
+      ],
+      "image": "/assets/replay-scale-bar.png"
+    }
+  ]
+}

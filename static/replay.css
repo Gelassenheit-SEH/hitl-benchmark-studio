@@ -1,0 +1,40 @@
+.replay-layout { display: grid; grid-template-columns: minmax(200px, .74fr) minmax(0, 2.7fr); gap: 22px; align-items: start; }
+.case-list { position: sticky; top: 20px; }
+.case-list h2 { margin: 0 0 9px 2px; font-size: 1rem; }
+#cases { display: grid; gap: 8px; }
+.case-button { display: grid; gap: 4px; width: 100%; text-align: left; padding: 11px 13px; }
+.case-button[aria-pressed="true"] { border-color: #74a494; background: var(--mint); }
+.case-button small { font-size: .75rem; color: var(--muted); }
+.replay-card { min-width: 0; }
+.replay-card > .section-head { align-items: flex-start; border-bottom: 1px solid var(--line); }
+.replay-card > .section-head p { max-width: 60ch; }
+.replay-body { padding: 20px 25px 24px; }
+.source-box { border: 1px solid var(--line); border-radius: 8px; padding: 10px 13px; background: #f5f8f2; }
+.source-box summary, .step-content summary { cursor: pointer; color: var(--ink); font-weight: 650; }
+.source-box p { margin-top: 8px; }
+.source-image { display: block; width: min(100%, 460px); height: auto; margin-top: 10px; border-radius: 6px; }
+.text-block { white-space: pre-wrap; overflow-wrap: anywhere; }
+.review-stage { margin-top: 16px; }
+.stage-nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 9px; margin: 0 0 11px; }
+.stage-nav .button:disabled { cursor: default; }
+.stage-list { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; gap: 6px; }
+.stage-list .button { padding: 6px 9px; min-height: 32px; font-size: .75rem; }
+.stage-list .button[aria-current="step"] { background: var(--teal); border-color: var(--teal); color: white; }
+.step-content { margin-top: 15px; border-top: 1px solid var(--line); padding-top: 15px; }
+.step-content .candidate { margin-top: 13px; margin-bottom: 0; }
+.step-content details { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+.step-content .delta { margin-top: 8px; }
+.step-content .judgment { font-weight: 650; margin: 7px 0 0; }
+.note { margin-top: 12px; border-left: 3px solid #478571; background: #f0f7f1; border-radius: 0 7px 7px 0; padding: 7px 12px 11px; }
+.step-content .note p { margin-top: 6px; }
+.diff-item { margin-top: 9px; }
+.diff-item h4 { margin: 0; font-size: .81rem; color: var(--muted); }
+@media (max-width: 800px) {
+  .replay-layout { grid-template-columns: 1fr; gap: 14px; }
+  .case-list { position: static; }
+  #cases { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .replay-body { padding: 16px; }
+  .step-content .delta { grid-template-columns: 1fr; }
+}
